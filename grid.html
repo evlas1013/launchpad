@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+
+<body onload="clearAll(); drawGrid(); randomMap();">
+    <canvas id="canvas" width=800 height=450>You don't got no canvas, bro</canvas>
+    <p>
+        <button onclick="location.reload();">Reset</button>
+        <button id = "clearGrid" onclick="clearAll(); drawGrid();">Clear Grid</button>
+        <button id="randMap" onclick="randomMap();">Generate A Random Map</button>
+        <button id="expandFromGreen" onclick="expandFromGreen();">Map Green To Red</button>
+    </p>
+        <p>
+        <input type="radio" name="boxType" value="from">Set Green Box
+
+        <input type="radio" name="boxType" value="to">Set Red Box
+
+        <input type="radio" name="boxType" value="obstacle">Set Obstacle
+
+        <input type="radio" name="boxType" value="clear">Clear Box
+    </p>
+    <h1 id="title">A* Mapping Algorithm</h1>
+    <p>Using the grid above, set a Green Box (Starting Point) and a Red Box (End Point).</p>
+    <p>You may set as many obstacles as you would like.</p>
+    <p>Use the radio buttons below to pick which type of box you would like to set and click inside the grid to set it.</p>
+    <p>When you're done, click the "Map Green To Red" button to trace the shortest possible route. If not route is available, an alert will pop up after a few moments informing you.</p>
+    <p>Gray boxes show all possible routes mapped.</p>
+    <p><strong>Be sure to click reset between maps. Failing to do so will cause the program to stop responding. I am working to resolve this.</strong></p>
+    <p>Enjoy!</p>
+
+
+    <script src="aStar.js">
+    </script>
+
+</body>
+
+</html>
