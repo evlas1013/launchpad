@@ -1,0 +1,312 @@
+/*
+Nick Salve
+26-OCT-2015
+ */
+package hangman;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Nick Salve
+ */
+public class Hangman {
+
+    /**
+     *
+     * @param filePath the path of your dictionary. To work correctly, this
+     * should be a list of words, separated by line breaks.
+     *
+     * @return This returns an array list of all of the elements of the text
+     * file passed in.
+     */
+    public static ArrayList<String> readDictionary(String filePath) {
+        // we don't know how many there are so we will use a dynamic 
+        // data structure
+        ArrayList<String> wordList = new ArrayList<>();
+        // declare, but do not create a scanner for file input.
+        Scanner inFile = null;
+        // now try to connect the sybolic name to the physical file
+        try {
+            inFile = new Scanner(new FileReader(filePath));
+            // if the physical file doesn't exist it throws an exception
+        } catch (FileNotFoundException ex) {
+            // we catch it and print an error message
+            System.out.println("File not found");
+            // and exit in a controlled manner
+            System.exit(1);
+        }
+        // otherwise.... we continue with reading things in
+        String word;
+        while (inFile.hasNext()) {
+            word = inFile.nextLine();
+            wordList.add(word);
+        }
+        inFile.close();
+        return wordList;
+    }//readDict
+
+    /**
+     *
+     * @param list takes an ArrayList<String> and picks a random element from
+     * the list and returns it as a string.
+     * @return the random element as a String.
+     */
+    public static String chooseRandomWord(ArrayList<String> list) {
+        String word;
+        int wordPosition = (int) Math.floor(Math.random() * list.size() + 1);
+        word = list.get(wordPosition);
+        return word;
+    }
+
+    /**
+     *
+     * @param word builds an array of blank spaces depending on the length of the answer
+     * @return the array of blanks.
+     */
+    public static char[] unansweredArray(String word) {
+        int wordLength = word.length();
+        char[] wordArray = new char[wordLength];
+        for (int i = 0; i < wordLength; i++) {
+            wordArray[i] = '_';
+
+        }
+        return wordArray;
+    }
+
+    /**
+     *
+     * @param wordArray takes in the user's current progress as an array and converts
+     * it to a string to be displayed
+     * @return a string of the user's progress.
+     */
+    public static String displaySolvedSoFar(char[] wordArray) {
+        String solvedSoFar = "";
+        for (int i = 0; i < wordArray.length; i++) {
+            solvedSoFar = solvedSoFar + wordArray[i] + " ";
+        }
+        return solvedSoFar;
+    }
+
+    /**
+     *
+     * @param charToTry a CHAR to be tested against the answer
+     * @param wordArray the ARRAY containing the answer
+     * @return
+     */
+    public static boolean tryChar(char charToTry, char[] wordArray) {
+        int i = 0;
+        boolean charExists = false;
+        while (i < wordArray.length) {
+            if (wordArray[i] != charToTry) {
+                //System.out.println(charToTry + " is not " + wordArray[i]);
+                i++;
+            } else {
+                return true;
+            }
+
+        }
+
+        return charExists;
+    }
+
+    /**
+     *
+     * @param word turns the answer in to an array of characters
+     * @return the answer as an array
+     */
+    public static char[] wordToArray(String word) {
+        char[] wordArray = new char[word.length()];
+        for (int i = 0; i < wordArray.length; i++) {
+            wordArray[i] = word.charAt(i);
+        }
+        return wordArray;
+    }
+
+    /**
+     *
+     * @param c the CHAR to be tested
+     * @param answerArray the CHAR array of the actual answer against which we test.
+     * @param unansweredArray the CHAR array of the user's current progress, where we 
+     * will put the CHAR if it is correct.
+     * @return
+     */
+    public static char[] revealChar(char c, char[] answerArray, char[] unansweredArray) {
+        for (int i = 0; i < answerArray.length; i++) {
+            if (c == answerArray[i]) {
+                unansweredArray[i] = c;
+            } else if (unansweredArray[i] != '_') {
+                unansweredArray[i] = unansweredArray[i];
+            } else {
+                unansweredArray[i] = '_';
+            }
+
+        }
+
+        return unansweredArray;
+
+    }
+
+    /**
+     *
+     * @param unansweredArray the CHAR array showing the user's current progress. 
+     * This method tests to see if there are still blank spaces. When there are none
+     * left, we know the game is over
+     * @return whether or not the game is over.
+     */
+    public static boolean gameOver(char[] unansweredArray) {
+        int i = 0;
+        while (i < unansweredArray.length) {
+            if (unansweredArray[i] == '_') {
+
+                return false;
+            } else {
+                i++;
+            }
+
+        }
+
+        return true;
+    }
+
+    /**
+     *
+     * @param attemptsRemain takes in an INT of how many remaining wrong answers
+     * the user has.
+     * @return draws the hangman board in ASCII based on remaining attempts
+     */
+    public static String drawHangman(int attemptsRemain) {
+        String hangman = "";
+        switch (attemptsRemain) {
+            case 0:
+                hangman = " |--||\n"
+                        + " |  ||\n"
+                        + " O  ||\n"
+                        + "-|- ||\n"
+                        + "/ | ||\n"
+                        + "    ||\n"
+                        + "____||\n";
+                break;
+            case 1:
+                hangman = " |--||\n"
+                        + " |  ||\n"
+                        + " O  ||\n"
+                        + "-|- ||\n"
+                        + "/   ||\n"
+                        + "    ||\n"
+                        + "____||\n";
+                break;
+            case 2:
+                hangman = " |--||\n"
+                        + " |  ||\n"
+                        + " O  ||\n"
+                        + "-|- ||\n"
+                        + "    ||\n"
+                        + "    ||\n"
+                        + "____||\n";
+                break;
+
+            case 3:
+                hangman = " |--||\n"
+                        + " |  ||\n"
+                        + " O  ||\n"
+                        + "-|  ||\n"
+                        + "    ||\n"
+                        + "    ||\n"
+                        + "____||\n";
+                break;
+
+            case 4:
+                hangman = " |--||\n"
+                        + " |  ||\n"
+                        + " O  ||\n"
+                        + " |  ||\n"
+                        + "    ||\n"
+                        + "    ||\n"
+                        + "____||\n";
+                break;
+            case 5:
+                hangman = " |--||\n"
+                        + " |  ||\n"
+                        + " O  ||\n"
+                        + "    ||\n"
+                        + "    ||\n"
+                        + "    ||\n"
+                        + "____||\n";
+                break;
+            case 6:
+                hangman = " |--||\n"
+                        + " |  ||\n"
+                        + "    ||\n"
+                        + "    ||\n"
+                        + "    ||\n"
+                        + "    ||\n"
+                        + "____||\n";
+                break;
+            case 7:
+                hangman = " |--||\n"
+                        + "    ||\n"
+                        + "    ||\n"
+                        + "    ||\n"
+                        + "    ||\n"
+                        + "    ||\n"
+                        + "____||\n";
+                break;
+        }
+        return hangman;
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        //declare vars
+        ArrayList wordList = readDictionary("dictionary.txt");
+        String word = chooseRandomWord(wordList);
+        int wordLength = word.length();
+        char[] unansweredArray = unansweredArray(word);
+        char[] answerArray = wordToArray(word);
+        String solvedSoFar = "";
+        int attemptsRemain = 7;
+        ArrayList attemptedLetters = new ArrayList<String>();
+        boolean gameOver = gameOver(unansweredArray);
+        int playAgain;
+        boolean showAnswer = true; //for debugging. displays answer. set to false.
+        boolean continueGame = true;
+
+        if(showAnswer)System.out.println(word);
+        System.out.println(displaySolvedSoFar(unansweredArray));
+        System.out.printf("\n%s", drawHangman(attemptsRemain));
+        Scanner input = new Scanner(System.in);
+
+        while (gameOver == false && attemptsRemain > 0) {
+            char tryChar = input.next().charAt(0);
+            if (attemptedLetters.contains(tryChar)) {
+                System.out.println(tryChar + " has already been attempted");
+                unansweredArray = revealChar(tryChar, answerArray, unansweredArray);
+                System.out.println(displaySolvedSoFar(unansweredArray));
+                System.out.printf("\n%s", drawHangman(attemptsRemain));
+            } else if (tryChar(tryChar, answerArray)) {
+                unansweredArray = revealChar(tryChar, answerArray, unansweredArray);
+                System.out.println(displaySolvedSoFar(unansweredArray));
+                System.out.printf("\n%s", drawHangman(attemptsRemain));
+
+            } else {
+                System.out.println("unlucky");
+                attemptsRemain -= 1;
+                System.out.println(displaySolvedSoFar(unansweredArray));
+                System.out.printf("\n%s", drawHangman(attemptsRemain));
+            }
+
+            attemptedLetters.add(tryChar);
+            gameOver = gameOver(unansweredArray);
+        }//gameOver
+        System.out.println(displaySolvedSoFar(answerArray));
+
+    }//main
+
+}
