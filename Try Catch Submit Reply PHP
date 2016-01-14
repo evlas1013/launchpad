@@ -1,0 +1,21 @@
+<?php
+$producer = $_REQUEST['producer'];
+$prodCompany = $_REQUEST['prodCompany'];
+$prodContact = $_REQUEST['email'];
+$assignment = $_REQUEST['assignment'];
+$embed = $_REQUEST['embed'];
+$embedStr = "'".'<iframe width="560" height="315" src="https://www.youtube.com/embed/'.$embed.'" frameborder="0" allowfullscreen></iframe>'."'";
+$message = '["'.$producer.'","'.$prodCompany.'","'.$prodContact.'","'.$assignment.'",'.$embedStr.']';
+
+mail('trycatchfilms@gmail.com', 'A new video for review on Try-Catch{films}', $message, 'From: noreply@trycatchfilms.com');
+?>
+
+<html>
+<link rel="stylesheet" type="text/css" href="http://www.trycatchfilms.com/style.css">
+<div>
+<a href="http://www.trycatchfilms.com"><img src="http://www.trycatchfilms.com/images/trycatch.png"></a>
+<p>Congratulations on finishing your film! Your submission will be reviewed by our team and your video will be added to the site once it is approved.<br><br>
+
+Note: we do not exclude videos for content. We review your submission to ensure that your video is an actual entry to Try-Catch{films} and that you're not just uploading every short film you've ever made to our site.</p>
+</div>
+</html>
