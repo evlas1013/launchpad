@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<title>try-catch{films}; Submission form</title>
+<html>
+
+<body>
+<script src = "randomFilm.js"></script>
+<head>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+
+
+<a href="index.html"><img src="images/trycatch.png" alt="try-catch{films}"></a>
+<br><br>
+<div>
+<table border="0">
+  <tbody>
+    <tr>
+      <td><a href="index.html">{home}</a></td>
+      <td><a href="assignment_form.html">{get an assignment}</a></td>
+      <td><a href="submit_form.html">{submit your finished film}</a></td>
+      <td><a href="films.html">{check out the films!}</a></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<br>
+
+<div id="submit_form">
+<form method="post" action="http://www.nicksalve.com/try_catch/submit.php">
+<h1>Submission Information:</h1>
+  <p> Producer Name:<br>
+<input type="text" size="25" maxlength="40" name="producer">
+	</p>
+        <p>Production Company:<br>
+          <input type="text" size="25" maxlength="40" name="prodCompany">
+        </p>
+        <p>
+          Contact Email:<br>
+          <input type="text" size="25" maxlength="40" name="email"><br>
+          </p>
+          
+          <p>
+          Unique YouTube Identifier (Usually the last part of the "share" link. example: https://youtu.be/<mark>vMirrdhFM4s</mark>) :<br>
+          <input type="text" size="25" maxlength="40" name="embed"><br>
+          </p>
+          <p>
+          Your assignment:<br>
+          <textarea name="assignment" id="assignment" cols="70" rows="10"></textarea><br>
+          <input type="submit" value="Send">
+        </p>
+        
+      </form>
+</div>
+
+
+<br>
+<div><strong>This website is currently in testing and production. Please send any feedback to <a href="mailto: info@evlasfilms.com">info@evlasfilms.com</a>.<br>Created by Nick Salve. Evlas Entertainment. <a href="http://www.twitter.com/nickwithms">@NickWithMS</a></strong></div><br>
+
+<table border="0">
+  <tbody>
+    <tr>
+    
+    
+      <td><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Random Film Gen Sm -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-2181634026638448"
+     data-ad-slot="4630365777"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></td>
+
+
+      <td><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Random Film Gen 2 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-2181634026638448"
+     data-ad-slot="4490764971"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></td>
+      
+      
+      <td><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Random Film Gen 3 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-2181634026638448"
+     data-ad-slot="5967498176"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></td>
+
+
+    </tr>
+  </tbody>
+</table>
+
+
+</body>
+<footer>
+</footer>
+</html>
