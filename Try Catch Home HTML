@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<title>try-catch{films};</title>
+<html>
+
+<body onload="generateData();">
+
+<head>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src = "randomFilm.js"></script>
+</head>
+
+
+
+<img src="images/trycatch.png" alt="try-catch{films}">
+<br><br>
+<div>
+<table border="0">
+  <tbody>
+    <tr>
+      <td><a href="index.html">{home}</a></td>
+      <td><a href="assignment_form.html">{get an assignment}</a></td>
+      <td><a href="submit_form.html">{submit your finished film}</a></td>
+      <td><a href="films.html">{check out the films!}</a></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<br>
+<div>
+<table>
+<tr>
+<td class="noHover">
+Welcome to Try-Catch {films}! This is an experimental film project where participants are randomly assigned a concept for a film to make. Once completed, the film will be featured on this website.
+<br><br>
+Below, you will find an example of the randomization engine. Play around with it. See what you think. If you would like to get a formal assignment for submission to our site, click the <a href="assignment_form.html">link</a> above. Unlike this sample generator, you only get one chance to generate an official concept for your film. Once completed, upload your film to your own <a href="http://www.youtube.com">YouTube</a> channel and use our <a href="submit_form.html">film submission form</a> to get your film live on our site! 
+<br><br>
+The Fine Print:<br>
+Maximum Length: 10 Minutes (not including 10-second Try-Catch{films} logo at head) for a total film time of 610 seconds.<br>
+Minimum Length: None.<br>
+Please include the Try-Catch{films} Logo title (available <a href="images/trycatch1080template.png">here</a>) at the head of your film. Include your Assignment on that title.<br>
+Please include "Try-Catch{films}" and/or "TryCatchFilms.com" in any credit sequences.
+
+</td>
+<td class="noHover">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kGlxsrDjpHM" frameborder="0" allowfullscreen></iframe>
+</td>
+</tr>
+</table>
+</div>
+<br>
+<div>
+<img src="images/try.png" height="45px">
+<p id="task"><strong>Generating. Please wait...</strong></p>
+<img src="images/closebracket.png" height="45px"><br><br>
+<img src="images/catch.png" height="45px">
+<p id="catch"></p>
+<img src="images/closebracket.png" height="45px"><br>
+<button id = "generate" onClick="generateData();">Regenerate</button>
+</div>
+<br>
+<div><strong>This website is currently in testing and production. Please send any feedback to <a href="mailto: info@evlasfilms.com">info@evlasfilms.com</a>.<br>Created by Nick Salve. Evlas Entertainment. <a href="http://www.twitter.com/nickwithms">@NickWithMS</a></strong></div><br>
+
+</body>
+<footer>
+</footer>
+</html>
