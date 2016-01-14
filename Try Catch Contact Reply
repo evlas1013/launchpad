@@ -1,0 +1,29 @@
+<?php
+$producer = $_REQUEST['producer'];
+$prodCompany = $_REQUEST['prodCompany'];
+$prodContact = $_REQUEST['email'];
+$assignment = $_REQUEST['assignment'];
+
+$message = $producer . ",\r\n" . "Thank you for your submission to Try Catch {films}! This is your confirmation.\r\n" . 
+"Submission Details:\r\n" . 
+"Producer: " . $producer . "\r\n" . 
+"Production Company: " . $prodCompany . "\r\n\n" . 
+"Assignment: \r\n";
+
+// In case any of our lines are larger than 70 characters, we should use wordwrap()
+$message = wordwrap($message, 70, "\r\n");
+
+$sent = mail($prodContact, 'Your Submission to Try-Catch {Films}', $message.$assignment, 'From: noreply@trycatchfilms.com');
+if($sent){
+	mail('trycatchfilms@gmail.com', 'New Submission to Try-Catch {Films}', $message.$assignment, 'From: noreply@trycatchfilms.com');
+} else {
+	print "Something went wrong";
+}
+?>
+<html>
+<link rel="stylesheet" type="text/css" href="http://www.trycatchfilms.com/style.css">
+<div>
+<a href="http://www.trycatchfilms.com"><img src="http://www.trycatchfilms.com/images/trycatch.png"></a>
+<p>Thank you for your submission! An email has been sent to the address you provided. Click <a href="http://www.trycatchfilms.com/">here </a>to return to Try Catch {films}.</p>
+</div>
+</html>
